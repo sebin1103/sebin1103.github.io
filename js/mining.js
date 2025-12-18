@@ -45,9 +45,24 @@
 
   // 아래 3개 테이블은 기존 코드가 참조하길래,
   // 없으면 에러나서 스태미나/판매 둘 다 멈추니까 안전 기본값을 넣어둠
+
+  // [수정 1] 불붙은 곡괭이 테이블 기본값 교체
+  // LV1~9: 1~9%, LV10: 15%
   const flamingPickTable = (typeof window.flamingPickTable === "object" && window.flamingPickTable)
     ? window.flamingPickTable
-    : { 0: 0 };
+    : {
+        0: 0,
+        1: 0.01,
+        2: 0.02,
+        3: 0.03,
+        4: 0.04,
+        5: 0.05,
+        6: 0.06,
+        7: 0.07,
+        8: 0.08,
+        9: 0.09,
+        10: 0.15,
+      };
 
   const ingotPriceTable = (typeof window.ingotPriceTable === "object" && window.ingotPriceTable)
     ? window.ingotPriceTable
@@ -175,6 +190,98 @@
         font-weight:800;
         font-size:12px;
       }
+
+      /* [수정 2] 채광 정보탭 UI를 해양 정보탭 스타일로 맞춤 */
+      #tab-info #info-expert{
+        background-color:#f7f9fc;
+        border:1px solid #d1d9e6;
+        border-radius:12px;
+        padding:20px;
+        max-width:600px;
+        margin-top:20px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      }
+      #tab-info #info-expert h3{
+        font-size:1.2rem;
+        font-weight:600;
+        color:#2a3f54;
+        margin-bottom:16px;
+      }
+      #info-expert-rod-row{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:12px 20px;
+        max-width:300px;
+        margin:20px auto;
+        border-radius:12px;
+        box-shadow:0 6px 15px rgba(0,0,0,0.08);
+        background:#ffffff;
+        color:#2a3f54;
+        font-weight:500;
+        text-align:center;
+      }
+      #info-expert-rod-row .fish-label{
+        flex:1;
+        text-align:left;
+        font-size:0.95rem;
+        font-weight:600;
+        color:#2a3f54;
+      }
+      #info-expert-rod-row input{
+        width:80px;
+        padding:6px 10px;
+        border:1px solid #ccc;
+        border-radius:6px;
+        text-align:right;
+      }
+      .fish-row{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        margin-bottom:12px;
+      }
+      #tab-info #info-expert .fish-label{
+        font-size:0.95rem;
+        color:#34495e;
+        flex:1;
+      }
+      #tab-info #info-expert .input-area{
+        flex:0 0 120px;
+        display:flex;
+        justify-content:flex-end;
+      }
+      #tab-info #info-expert .input-area input{
+        width:110px;
+        padding:8px 10px;
+        border:1px solid #ccc;
+        border-radius:6px;
+        text-align:right;
+        transition:border-color 0.2s, box-shadow 0.2s;
+      }
+      #tab-info #info-expert .input-area input:focus{
+        border-color:#4a90e2;
+        box-shadow:0 0 4px rgba(74,144,226,0.3);
+        outline:none;
+      }
+      .expert-desc{
+        width:100%;
+        margin:6px 0 12px 0;
+        padding:10px 12px;
+        background:#ffffff;
+        border:1px solid #e5e7eb;
+        border-radius:6px;
+        display:none;
+        line-height:1.5;
+        color:#334155;
+      }
+      .info-btn{
+        margin-left:6px;
+        font-size:13px;
+        cursor:pointer;
+        color:#2563eb;
+        user-select:none;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -225,36 +332,60 @@
     // ========== 정보탭 ==========
     if (info && !info.dataset.built) {
       info.dataset.built = "1";
+
+      // [수정 2] 정보탭 UI만 해양 정보탭 구조로 변경
       info.innerHTML = `
         <h2 class="content-title">채광 - 정보</h2>
 
-        <div class="mining-card">
-          <div class="mining-title">현재 전문가 세팅 (채광)</div>
+        <div id="info-expert">
+          <h3>⛏️ 현재 전문가 세팅 (채광)</h3>
 
-          <div class="mining-grid">
-            <div>곡괭이 스펙</div>
-            <input id="mining-pickaxe-lv" class="mining-input" type="number" min="1" max="15" placeholder="예) 10">
+          <div id="info-expert-rod-row">
+            <div class="fish-label">곡괭이 스펙</div>
+            <input id="mining-pickaxe-lv" type="number" min="1" max="15" placeholder="예) 10">
           </div>
-
-          <div class="mining-grid">
-            <div>럭키 히트 </div>
-            <input id="mining-expert-lucky" class="mining-input" type="number" min="0" max="10" placeholder="LV">
-          </div>
-
-          <div class="mining-grid">
-            <div>불붙은 곡괭이</div>
-            <input id="mining-expert-flame" class="mining-input" type="number" min="0" max="10" placeholder="LV">
-          </div>
-
 
           <div class="fish-row">
-            <div class="mining-grid">
-              반짝반짝 눈이 부셔
-              <input id="mining-expert-gemprice" class="mining-input" type="number" min="0" max="6" placeholder="LV">
+            <div class="fish-label">
+              럭키 히트 (0~10)
+              <span class="info-btn" onclick="toggleDesc('desc-lucky')">ⓘ</span>
+            </div>
+            <div class="input-area">
+              <input id="mining-expert-lucky" type="number" min="0" max="10" placeholder="LV">
             </div>
           </div>
 
-          <div id="desc-gem-price" class="expert-desc" style="display:none;"></div>
+          <div id="desc-lucky" class="expert-desc">
+            LV별로 확률적으로 광석이 추가 드롭돼요. (레벨이 높을수록 확률/추가 개수 증가)
+          </div>
+
+          <div class="fish-row">
+            <div class="fish-label">
+              불붙은 곡괭이 (0~10)
+              <span class="info-btn" onclick="toggleDesc('desc-flame')">ⓘ</span>
+            </div>
+            <div class="input-area">
+              <input id="mining-expert-flame" type="number" min="0" max="10" placeholder="LV">
+            </div>
+          </div>
+
+          <div id="desc-flame" class="expert-desc">
+            채광 시 일정 확률로 광석이 주괴 1개로 제련되어 드롭돼요.
+          </div>
+
+          <div class="fish-row">
+            <div class="fish-label">
+              반짝반짝 눈이 부셔 (0~6)
+              <span class="info-btn" onclick="toggleDesc('desc-gem-price')">ⓘ</span>
+            </div>
+            <div class="input-area">
+              <input id="mining-expert-gemprice" type="number" min="0" max="6" placeholder="LV">
+            </div>
+          </div>
+
+          <div id="desc-gem-price" class="expert-desc">
+            보석 판매가가 레벨에 따라 증가해요. (판매탭 계산에 반영됨)
+          </div>
 
           <div id="mining-expert-summary" class="mining-note" style="margin-top:10px;"></div>
         </div>
