@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍎계산기 - 채광</title>
+
+  <!-- 공통 스타일 -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- 채광 전용 스타일 (나중에 작성) -->
+  <!-- <link rel="stylesheet" href="mining.css" /> -->
+</head>
+<body>
+
+  <!-- ===== 상단 헤더 (공통) ===== -->
+  <header class="top-header">
+    <div class="header-inner">
+
+      <div class="logo">계산기</div>
+
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="mining.html" class="active">채광</a>
+        <a href="ocean.html">해양</a>
+        <a href="farming.html">재배</a>
+        
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ===== 채광 하위 탭 ===== -->
+  <div class="sub-header">
+    <div class="sub-header-inner">
+      <a href="#" class="active" data-target="tab-info">정보</a>
+      <a href="#" data-target="tab-stamina">스태미나</a>
+      <a href="#" data-target="tab-craft">판매</a>
+      <a href="#" data-target="tab-life-craft">제작</a>
+    </div>
+  </div>
+
+  <!-- ===== 메인 콘텐츠 ===== -->
+  <main class="page">
+    <section class="content-area">
+
+      <!-- 정보 -->
+      <div id="tab-info" class="tab-content">
+        <h2 class="content-title">채광 - 정보</h2>
+        <p>
+          채광 시스템 설명, 드랍 아이템, 기본 효율 정보가 들어갈 영역
+        </p>
+      </div>
+
+      <!-- 스태미나 -->
+      <div id="tab-stamina" class="tab-content" style="display:none;">
+        <h2 class="content-title">채광 - 스태미나</h2>
+        <p>
+          스태미나 소모량, 회복, 하루 수익 계산기 영역
+        </p>
+      </div>
+
+      <!-- 제작 -->
+      <div id="tab-craft" class="tab-content" style="display:none;">
+        <h2 class="content-title">채광 - 판매</h2>
+        <p>
+          제작 재료 소모 대비 효율 계산 영역
+        </p>
+      </div>
+
+      <!-- 제작(라이프스톤) -->
+      <div id="tab-life-craft" class="tab-content" style="display:none;">
+        <h2 class="content-title">채광 - 제작</h2>
+        <p>라이프 스톤 재료 계산 영역</p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="footer">
+    © 꼬순내
+  </footer>
+
+  <!-- 공통 스크립트 -->
+  <script src="js/script.js"></script>
+
+  <!-- 채광 전용 스크립트 -->
+  <script src="js/mining.js"></script>
+
+</body>
+</html>

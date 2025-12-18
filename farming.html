@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍎계산기 - 재배</title>
+
+  <!-- 공통 스타일 -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- 재배 전용 스타일 (추후) -->
+  <!-- <link rel="stylesheet" href="farming.css" /> -->
+</head>
+<body>
+
+  <!-- ===== 상단 헤더 ===== -->
+  <header class="top-header">
+    <div class="header-inner">
+
+      <div class="logo">계산기</div>
+
+      <nav class="main-nav">
+        <a href="index.html">홈</a>
+        <a href="mining.html">채광</a>
+        <a href="ocean.html">해양</a>
+        <a href="farming.html" class="active">재배</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ===== 재배 하위 탭 ===== -->
+  <div class="sub-header">
+    <div class="sub-header-inner">
+      <a href="#" class="active" data-target="tab-info">정보</a>
+      <a href="#" data-target="tab-stamina">스태미나</a>
+      <a href="#" data-target="tab-farm">재배</a>
+      <a href="#" data-target="tab-cook">요리</a>
+    </div>
+  </div>
+
+  <!-- ===== 메인 콘텐츠 ===== -->
+  <main class="page">
+    <section class="content-area">
+
+      <!-- 정보 -->
+      <div id="tab-info" class="tab-content">
+        <h2 class="content-title">재배 - 정보</h2>
+        <p>재배 시스템 설명, 작물 정보, 기본 효율</p>
+      </div>
+
+      <!-- 스태미나 -->
+      <div id="tab-stamina" class="tab-content" style="display:none;">
+        <h2 class="content-title">재배 - 스태미나</h2>
+        <p>스태미나 소모 및 회복 계산 영역</p>
+      </div>
+
+      <!-- 재배 -->
+      <div id="tab-farm" class="tab-content" style="display:none;">
+        <h2 class="content-title">재배 - 재배</h2>
+        <p>작물별 수익, 재배 효율 계산 영역</p>
+      </div>
+
+      <!-- 요리 -->
+      <div id="tab-cook" class="tab-content" style="display:none;">
+        <h2 class="content-title">재배 - 요리</h2>
+        <p>요리 제작 수익 및 재료 효율</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 몽실몽실
+  </footer>
+
+  <!-- 공통 스크립트 -->
+  <script src="js/script.js"></script>
+
+  <!-- 재배 전용 스크립트 -->
+  <!-- <script src="farming.js"></script> -->
+
+</body>
+</html>

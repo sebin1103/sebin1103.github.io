@@ -1,0 +1,539 @@
+/* =========================
+   OCEAN – Result Focus UI
+========================= */
+
+/* 페이지 기본 */
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+
+
+/* =========================
+   성급 토글
+========================= */
+.star-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  position: relative;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* 성급 라디오 버튼 숨기기 */
+.star-toggle input[type="radio"] {
+  display: none;
+}
+
+/* 성급 라벨 스타일 */
+.star-toggle label {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #d0d0d0;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background: #fafafa;
+  transition: background 0.2s ease;
+  text-align: center;
+  user-select: none;
+}
+
+/* 선택된 상태 */
+.star-toggle input[type="radio"]:checked + label {
+  background: #1e6fd9;
+  color: #fff;
+  border-color: #1e6fd9;
+}
+
+/* 마우스 오버 */
+.star-toggle label:hover {
+  background: #d0e4ff;
+}
+
+/* =========================
+   세트 스위치
+========================= */
+/* 스위치 컨테이너 */
+.star-toggle .switcher-set {
+  margin-left: auto;
+  position: relative;
+  width: 50px; /* 원하는 크기 */
+  height: 26px;
+}
+
+/* 체크박스 숨기기 */
+.star-toggle .switcher-set input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 스위치 라벨 디자인 */
+.star-toggle .switcher-set label {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+/* 스위치 안 원 */
+.star-toggle .switcher-set label:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+/* 체크되면 오른쪽으로 이동 + 색상 변경 */
+.star-toggle .switcher-set input:checked + label {
+  background-color: #1e6fd9;
+}
+
+.star-toggle .switcher-set input:checked + label:before {
+  transform: translateX(24px); /* 50px 스위치 기준 */
+}
+
+
+
+/* =========================
+   입력 영역
+========================= */
+.star-level h3 {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.input-grid label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+    color: #444;
+}
+
+.input-grid input {
+    margin-top: 6px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+
+/* =========================
+   계산 버튼
+========================= */
+button {
+    margin-top: 6px;
+    padding: 10px 22px;
+    border-radius: 10px;
+    border: none;
+    background: #1e6fd9;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #1558b0;
+}
+
+/* =========================
+   결과 카드
+========================= */
+.result-card {
+    margin-top: 24px;
+    padding: 22px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* 헤더 */
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.result-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.result-gold {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #d62828;
+}
+
+
+/* =========================
+   제작 결과 카드
+========================= */
+.result-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.result-products div {
+    background: #f8f9fb;
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.result-products span {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e6fd9;
+}
+
+
+/* ===============================
+   정보탭 전문가 입력 UI
+   =============================== */
+
+
+
+
+
+#tab-info #info-expert {
+    background-color: #f7f9fc; /* 살짝 밝은 배경 */
+    border: 1px solid #d1d9e6; /* 테두리 강조 */
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 600px;
+    margin-top: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#tab-info #info-expert h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2a3f54;
+    margin-bottom: 16px;
+}
+
+/* 행 스타일 */
+#tab-info #info-expert .fish-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+/* 레이블 스타일 */
+#tab-info #info-expert .fish-label {
+    font-size: 0.95rem;
+    color: #34495e;
+    flex: 1;
+}
+
+/* 입력창 스타일 */
+#tab-info #info-expert .input-area {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#tab-info #info-expert .input-area input {
+    width: 80px;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: right;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* 입력창 포커스 효과 */
+#tab-info #info-expert .input-area input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 4px rgba(74,144,226,0.3);
+    outline: none;
+}
+
+/* 모든 number input 화살표 제거 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+
+
+
+/* 낚싯대 스펙 블록 - 기존 카드 느낌 + 생동감 */
+#tab-info #info-expert-rod-row {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 블록 가운데 정렬 */
+    padding: 12px 20px;
+    max-width: 300px;
+    margin: 20px auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    background-size: 200% auto;
+    color: #2a3f54; /* 기존 카드 글자 색과 유사 */
+    font-weight: 500;
+    text-align: center;
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.5s ease;
+    background-image: linear-gradient(to right, #f7f9fc 0%, #e4ebf5 51%, #f7f9fc 100%); /* 기존 카드 느낌 */
+}
+
+/* 블록 호버 시 생동감 효과 */
+#tab-info #info-expert-rod-row:hover {
+    transform: translateY(-3px); /* 살짝 떠오르는 느낌 */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    background-position: right center; /* 그라데이션 이동 */
+}
+
+/* 레이블 */
+#tab-info #info-expert-rod-row .fish-label {
+    margin-right: 12px;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #2a3f54; /* 기존 카드와 동일 */
+}
+
+/* 입력창 */
+#tab-info #info-expert-rod-row input {
+    width: 80px;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: right;
+    background-color: #fff; /* 깔끔하게 */
+    transition: box-shadow 0.2s ease;
+}
+
+/* 입력창 포커스 */
+#tab-info #info-expert-rod-row input:focus {
+    outline: none;
+    box-shadow: 0 0 4px rgba(74,144,226,0.3);
+}
+
+
+
+/* ===========정보토글==============*/
+   
+
+
+.info-btn {
+    margin-left: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #2563eb;
+    user-select: none;
+}
+
+/* 설명 박스 */
+.expert-desc {
+    width: 100%;
+    margin: 6px 0 12px 0;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #4b5563;
+    background-color: #f9fafb;
+    border-left: 3px solid #2563eb;
+    border-radius: 6px;
+    display: none;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   스태미나 카드
+========================= */
+.stamina-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    background: #ffffff;
+    max-width: 480px; /* 카드 폭 넓게 */
+    margin: 0 auto 40px auto;
+}
+
+/* 제목 + 전문가 정보 */
+.stamina-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px; /* 기존 제목-전문가 간격 */
+    margin-bottom: 16px; /* 전문가-입력 영역 간격 확대 */
+}
+
+.stamina-header-title {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.stamina-header-expert {
+    font-size: 0.9rem;
+    color: #555;
+    text-align: center;
+}
+
+/* 입력 영역: 가로 배치 */
+.stamina-inputs-horizontal {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 8px;
+}
+
+/* 입력 라벨 */
+.stamina-input-label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: #444;
+    text-align: center;
+    width: 140px; /* 기존보다 조금 줄임 */
+}
+
+.stamina-input-label input,
+.stamina-input-label select {
+    margin-top: 6px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+/* 계산 버튼 */
+.stamina-button-wrapper {
+    text-align: center;
+    margin-top: 12px;
+    width: auto; /* 전체 폭 대신 버튼 내용에 맞춤 */
+}
+
+.stamina-button-wrapper button {
+    padding: 10px 20px; /* 버튼 폭 조금 줄임 */
+    border-radius: 10px;
+    border: none;
+    background: #1e6fd9;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    min-width: 120px; /* 최소 폭 유지 */
+    transition: background 0.2s;
+}
+
+.stamina-button-wrapper button:hover {
+    background: #1558b0;
+}
+
+/* 스태미나 결과 항목: 제작 결과 느낌 */
+.stamina-result-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* 개별 카드 */
+.stamina-result-products div {
+    background: #f8f9fb; /* 카드 배경 */
+    border-radius: 12px;
+    padding: 14px 10px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+
+/* 수량 강조 */
+.stamina-result-products span {
+    display: block;
+    margin-top: 6px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e6fd9;
+}
+
+
+
+
+
+
+
+
+
+/* =========================
+   반응형
+========================= */
+@media (max-width: 768px) {
+    .result-products {
+        grid-template-columns: 1fr;
+    }
+
+    .result-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+        #tab-info #info-expert .fish-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #tab-info #info-expert .input-area {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 6px;
+    }
+
+    #tab-info #info-expert .input-area input {
+        width: 100%;
+    }
+
+}
