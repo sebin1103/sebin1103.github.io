@@ -237,24 +237,15 @@
           </div>
 
           <div class="mining-grid">
-            <div>럭키 히트 (0~10)</div>
+            <div>럭키 히트 </div>
             <input id="mining-expert-lucky" class="mining-input" type="number" min="0" max="10" placeholder="LV">
           </div>
 
           <div class="mining-grid">
-            <div>불붙은 곡괭이 (0~10)</div>
+            <div>불붙은 곡괭이</div>
             <input id="mining-expert-flame" class="mining-input" type="number" min="0" max="10" placeholder="LV">
           </div>
 
-          <div class="mining-grid">
-            <div>주괴 판매가 (0~6)</div>
-            <input id="mining-expert-ingotprice" class="mining-input" type="number" min="0" max="6" placeholder="LV">
-          </div>
-
-          <div class="mining-grid">
-            <div>보석 판매가 (0~6)</div>
-            <input id="mining-expert-gemprice" class="mining-input" type="number" min="0" max="6" placeholder="LV">
-          </div>
 
           <div class="fish-row">
             <div class="mining-grid">
