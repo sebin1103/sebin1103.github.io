@@ -88,9 +88,9 @@
 
   // 판매탭 보석 상점가 (요청값)
   const gemShopPrice = {
-    gramit: 7490,
-    emerio: 8025,
-    shineflare: 8560,
+    gramit: 7000,
+    emerio: 7500,
+    shineflare: 8000,
   };
   const gemNameMap = {
     gramit: "그라밋",
@@ -347,7 +347,7 @@
 
           <div class="fish-row">
             <div class="fish-label">
-              럭키 히트 (0~10)
+              럭키 히트 
               <span class="info-btn" onclick="toggleDesc('desc-lucky')">ⓘ</span>
             </div>
             <div class="input-area">
@@ -361,7 +361,7 @@
 
           <div class="fish-row">
             <div class="fish-label">
-              불붙은 곡괭이 (0~10)
+              불붙은 곡괭이 
               <span class="info-btn" onclick="toggleDesc('desc-flame')">ⓘ</span>
             </div>
             <div class="input-area">
@@ -375,7 +375,7 @@
 
           <div class="fish-row">
             <div class="fish-label">
-              반짝반짝 눈이 부셔 (0~6)
+              반짝반짝 눈이 부셔
               <span class="info-btn" onclick="toggleDesc('desc-gem-price')">ⓘ</span>
             </div>
             <div class="input-area">
@@ -452,9 +452,9 @@
           <div class="mining-grid">
             <div>보석 종류</div>
             <select id="mining-gem-type" class="mining-select">
-              <option value="gramit">그라밋 (7,490골드)</option>
-              <option value="emerio">에메리오 (8,025골드)</option>
-              <option value="shineflare">샤인플레어 (8,560골드)</option>
+              <option value="gramit">그라밋</option>
+              <option value="emerio">에메리오</option>
+              <option value="shineflare">샤인플레어</option>
             </select>
           </div>
 
@@ -667,10 +667,25 @@
 
     const recipe = lifeStoneRecipes[type] || lifeStoneRecipes.low;
     const perOne = recipe.perOne || {};
+
+    // [추가] 1세트=64개 기준으로 (몇 세트 + 몇 개) 표시 문자열 생성
     const rows = Object.keys(perOne).map((mat) => {
       const per = Number(perOne[mat] || 0);
       const total = per * count;
-      return { mat, per, total };
+
+      const set = Math.floor(total / 64);
+      const rest = total % 64;
+
+      let setText = "";
+      if (set > 0 && rest > 0) {
+        setText = ` (${set}세트 + ${rest}개)`;
+      } else if (set > 0) {
+        setText = ` (${set}세트)`;
+      } else {
+        setText = ` (${rest}개)`;
+      }
+
+      return { mat, per, total, setText };
     });
 
     const el = $("life-stone-result");
@@ -685,7 +700,7 @@
       <tr>
         <td>${r.mat}</td>
         <td class="mining-td-right">${formatNumber(r.per)}</td>
-        <td class="mining-td-right">${formatNumber(r.total)}</td>
+        <td class="mining-td-right">${formatNumber(r.total)}${r.setText}</td>
       </tr>
     `).join("");
 
